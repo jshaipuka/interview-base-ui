@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { roles } from '../data';
 
 @Component({
   selector: 'app-role-board',
@@ -6,8 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./role-board.component.css']
 })
 export class RoleBoardComponent implements OnInit {
+  roles: any[];
 
-  constructor() { }
+  constructor() {
+    this.roles = roles;
+  }
 
   ngOnInit() {
   }
