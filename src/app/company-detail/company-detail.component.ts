@@ -3,11 +3,11 @@ import { Company } from '../models/Company';
 import { company1 } from '../data';
 
 @Component({
-  selector: 'app-company-single',
-  templateUrl: './company-single.component.html',
-  styleUrls: ['./company-single.component.css']
+  selector: 'app-company-detail',
+  templateUrl: './company-detail.component.html',
+  styleUrls: ['./company-detail.component.css']
 })
-export class CompanySingleComponent implements OnInit {
+export class CompanyDetailComponent implements OnInit {
   company: Company;
 
   constructor() {
