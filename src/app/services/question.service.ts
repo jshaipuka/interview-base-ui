@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
+import { Config } from '../app.config';
+
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class CompanyService {
-  private base_url = 'http://localhost:8080/graphql?query=%7BallLinks%7Burl%7D%7D';
+export class QuestionService {
+  private base_url = `${Config.API_URL}?query=%7BallLinks%7Burl%7D%7D`;
 
   constructor(private http: Http) { }
 
@@ -23,8 +26,8 @@ export class CompanyService {
       .catch(this.handleErrorObservable);
   }
 
-  create(event: any): Promise<any> {
-    return this.http.post(this.base_url, event).toPromise()
+  create(question: any): Promise<any> {
+    return this.http.post(this.base_url, question).toPromise()
       .then(response => response.json())
       .catch(this.handleError);
   }

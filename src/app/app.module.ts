@@ -7,11 +7,16 @@ import { routes } from './app-routing.module';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { CompanyService } from './company.service';
+
+import { CompanyService } from './services/company.service';
 import { CompanyBoardComponent } from './company-board/company-board.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
+
+import { RoleService } from './services/role.service';
 import { RoleBoardComponent } from './role-board/role-board.component';
 import { RoleDetailComponent } from './role-detail/role-detail.component';
+
+import { QuestionService } from './services/question.service';
 import { QuestionBoardComponent } from './question-board/question-board.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
 
@@ -30,7 +35,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     RouterModule.forRoot(routes),
     HttpModule
   ],
-  providers: [CompanyService],
+  providers: [CompanyService, RoleService, QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

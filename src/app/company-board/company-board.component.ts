@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 // import { ActivatedRoute, Router, ParamMap } from '@angular/router';
-import { CompanyService } from '../company.service';
+import { CompanyService } from '../services/company.service';
 
 import { companies } from '../data';
 import 'rxjs/add/operator/switchMap';
