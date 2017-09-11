@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { RouterModule } from '@angular/router';
+import { routes } from './app-routing.module';
+
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -24,6 +27,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(routes),
     HttpModule
   ],
   providers: [CompanyService],

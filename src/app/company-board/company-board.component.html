@@ -1,15 +1,14 @@
-
+<h1> Company board </h1>
 
 <div class="row">
   <div class="col">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let company of companies">
         <img src="{{company.icon}}" width="100px" class="rounded float-left"/>
-        <a href="{{company.id}}">{{company.name}} <span class="badge badge-warning float-right">QUESTIONS: {{company.questionCount}}</span></a>
+        <a [routerLink]="['/companies', company.id]">{{company.name}} <span class="badge badge-warning float-right">QUESTIONS: {{company.questionCount}}</span></a>
       </li>
     </ul>
   </div>
 </div>
 <p>DATA: {{data}}</p>
 <p>errorMessage: {{errorMessage}}</p>
-
