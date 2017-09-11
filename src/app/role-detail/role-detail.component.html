@@ -1,4 +1,31 @@
 <h1> Role single </h1>
-<div>
-  {{role | json}}
-</div>
+<h4>
+  {{role.name}}
+</h4>
+<p>{{role.description}}</p>
+<h6>
+  Companies:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let company of role.companies"><a [routerLink]="['/companies', company.id]">{{company.name}}</a></li>
+</ul>
+
+<h6>
+  Questions:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let question of role.questions"><a [routerLink]="['/questions', question.id]">{{question.name}} <span class="badge badge-warning float-right">LVL: {{question.difficulty}}</span></a></li>
+</ul>
+
+<h6>
+  Tags:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let tag of role.tags"><a>{{tag.name}} <span class="badge badge-warning float-right">{{tag.count}}</span></a></li>
+</ul>
+<h6>
+  Questions count: {{role.questionCount}}
+</h6>
+<h6>
+  difficulty: {{role.difficulty}}
+</h6>

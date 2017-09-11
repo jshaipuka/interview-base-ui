@@ -1,4 +1,32 @@
 <h1> Question single </h1>
-<div>
-  {{question | json}}
-</div>
+<h4>
+  {{question.name}}
+</h4>
+<p>{{question.description}}</p>
+<p>
+  Answer: {{question.answer}}
+</p>
+<h6>
+  Companies:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let company of question.companies"><a [routerLink]="['/companies', company.id]">{{company.name}}</a></li>
+</ul>
+
+<h6>
+  Roles:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let role of question.roles"><a [routerLink]="['/roles', role.id]">{{role.name}}</a></li>
+</ul>
+
+<h6>
+  Tags:
+</h6>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let tag of question.tags"><a>{{tag.name}} <span class="badge badge-warning float-right">{{tag.count}}</span></a></li>
+</ul>
+
+<h6>
+  difficulty: {{question.difficulty}}
+</h6>
