@@ -137,17 +137,63 @@ export const questions = [
   {
     id: '1',
     name: 'Have you ever used banana peel to make Sportacus trip?',
-    difficulty: 2
+    difficulty: 2,
+    tags: [
+      {
+        id: '1',
+        name: 'Throw Rotten Tomatoes',
+        count: 2
+      },
+      {
+        id: '2',
+        name: 'Laziness',
+        count: 3
+      },
+      {
+        id: '3',
+        name: 'Invent evil schemes',
+        count: 1
+      },
+      {
+        id: '4',
+        name: 'Never worked with Sportacus',
+        count: 151
+      }
+    ]
   },
   {
     id: '2',
     name: 'Do you prefer a cake or an apple for breakfast?',
-    difficulty: 1
+    difficulty: 1,
+    tags: [
+      {
+        id: '3',
+        name: 'Invent evil schemes',
+        count: 1
+      },
+      {
+        id: '4',
+        name: 'Never worked with Sportacus',
+        count: 151
+      }
+    ]
   },
   {
     id: '3',
     name: 'Do you prefer a green or red apples?',
-    difficulty: 3
+    difficulty: 3,
+    tags: [
+      {
+        id: '1',
+        name: 'Throw Rotten Tomatoes',
+        count: 2
+      },
+      {
+        id: '4',
+        name: 'Never worked with Sportacus',
+        count: 151
+      }
+    ]
   }
 ];
 
