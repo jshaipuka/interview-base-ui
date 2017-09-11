@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { roles } from '../data';
+import {Component, OnInit} from '@angular/core';
+import {RoleService} from '../services/role.service';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-role-board',
@@ -8,12 +11,21 @@ import { roles } from '../data';
 })
 export class RoleBoardComponent implements OnInit {
   roles: any[];
+  errorMessage: string;
 
-  constructor() {
-    this.roles = roles;
+  constructor(private roleService: RoleService) {
   }
 
   ngOnInit() {
+    this.setup();
   }
 
+  private setup() {
+    this.roleService.list().subscribe(
+      data => {
+        this.roles = data;
+      },
+      error => this.errorMessage = <any>error
+    );
+  }
 }

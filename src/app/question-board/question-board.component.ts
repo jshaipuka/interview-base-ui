@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { questions } from '../data';
+import {Component, OnInit} from '@angular/core';
+import {QuestionService} from '../services/question.service';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-question-board',
@@ -8,12 +11,21 @@ import { questions } from '../data';
 })
 export class QuestionBoardComponent implements OnInit {
   questions: any[];
+  errorMessage: string;
 
-  constructor() {
-    this.questions = questions;
+  constructor(private questionService: QuestionService) {
   }
 
   ngOnInit() {
+    this.setup();
   }
 
+  private setup() {
+    this.questionService.list().subscribe(
+      data => {
+        this.questions = data;
+      },
+      error => this.errorMessage = <any>error
+    );
+  }
 }
