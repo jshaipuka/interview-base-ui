@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { question1 } from '../data';
+import {Component, OnInit} from '@angular/core';
+import {QuestionService} from '../services/question.service';
+import {ActivatedRoute} from '@angular/router';
+
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-question-detail',
@@ -8,12 +12,26 @@ import { question1 } from '../data';
 })
 export class QuestionDetailComponent implements OnInit {
   question: any;
+  errorMessage: string;
 
-  constructor() {
-    this.question = question1;
+  constructor(
+    private route: ActivatedRoute,
+    private questionService: QuestionService
+  ) {
   }
 
   ngOnInit() {
+    this.setup();
   }
 
+  private setup() {
+    this.route.params.subscribe(params => {
+      this.questionService.get(params['id']).subscribe(
+        data => {
+          this.question = data;
+        },
+        error => this.errorMessage = <any>error
+      );
+    });
+  }
 }
