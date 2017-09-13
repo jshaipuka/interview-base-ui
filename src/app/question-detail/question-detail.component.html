@@ -1,32 +1,43 @@
-<h1> Question single </h1>
-<h4>
-  {{question.name}}
-</h4>
-<p>{{question.description}}</p>
-<p>
-  Answer: {{question.answer}}
-</p>
-<h6>
-  Companies:
-</h6>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let company of question.companies"><a [routerLink]="['/companies', company.id]">{{company.name}}</a></li>
-</ul>
+<div class="row">
+  <div class="col-md-8">
+    <h4>
+      {{question.name}}
+    </h4>
+    <p>{{question.description}}</p>
+    <h4>
+      Answer
+    </h4>
+    <p>
+      {{question.answer}}
+    </p>
+  </div>
+  <div class="col-md-4">
+    <div class="card">
+      <h4 class="card-header">Info</h4>
+      <div class="card-body">
+        <h6 class="card-title">Companies</h6>
+        <small><span class="badge badge-dark" *ngFor="let company of question.companies"><a [routerLink]="['/companies', company.id]" style="color:white;">{{company.name}}</a></span></small>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Roles</h6>
+        <small><span class="badge badge-warning" *ngFor="let role of question.roles"><a [routerLink]="['/roles', role.id]" style="color:white;">{{role.name}}</a></span></small>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Tags</h6>
+        <small><span class="badge badge-success" *ngFor="let tag of question.tags"><a [routerLink]="['/tags', tag.name]" style="color:white;">{{tag.name}}</a></span></small>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">Difficulty:
+          <small><i class="fa fa-star" aria-hidden="true" *ngFor="let i of difficulty(question.difficulty)"></i><i class="fa fa-star-o" aria-hidden="true" *ngFor="let i of difficulty(5 - question.difficulty)"></i></small>
+        </h6>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h6>
-  Roles:
-</h6>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let role of question.roles"><a [routerLink]="['/roles', role.id]">{{role.name}}</a></li>
-</ul>
-
-<h6>
-  Tags:
-</h6>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let tag of question.tags"><a>{{tag.name}} <span class="badge badge-warning float-right">{{tag.count}}</span></a></li>
-</ul>
-
-<h6>
-  difficulty: {{question.difficulty}}
-</h6>

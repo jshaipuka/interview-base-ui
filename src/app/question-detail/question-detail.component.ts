@@ -34,4 +34,8 @@ export class QuestionDetailComponent implements OnInit {
       );
     });
   }
+
+  difficulty(level) {
+    return Array(level);
+  }
 }
