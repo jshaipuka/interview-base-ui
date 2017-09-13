@@ -1,14 +1,93 @@
-<h1> Questions board </h1>
+
+<h2>Questions</h2>
 <div class="row">
-  <div class="col">
+
+  <div class="col-md-2">
+    <div class="card mb-3" style="max-width: 20rem;">
+      <div class="card-body">
+        <p> Applied filters...</p>
+      </div>
+    </div>
+    <div class="card mb-3" style="max-width: 20rem;">
+      <div class="card-header">Filters</div>
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label>Tags</label>
+            <div class="form-check" *ngFor="let tag of tagsFilter">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                {{tag.name}}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Roles</label>
+            <div class="form-check" *ngFor="let role of rolesFilter">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                {{role.name}}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Companies</label>
+            <div class="form-check" *ngFor="let company of companiesFilter">
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                {{company.name}}
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Difficulty</label>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity" class="col-form-label">From</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputCity" class="col-form-label">To</label>
+                <input type="text" class="form-control" id="inputCity">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Has an answer</label>
+            <div class="form-check" >
+              <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                With answer
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Sort by</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+              <option>A to Z</option>
+              <option>Z to A</option>
+              <option>Most recent</option>
+              <option>Difficulty</option>
+              <option>Has an answer</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-9">
     <ul class="list-group">
       <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let q of questions">
         <a [routerLink]="['/questions', q.id]">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">{{q.name}}</h5>
-            <small>{{q.difficulty}}</small>
-          </div>
-          <small><span class="badge badge-pill badge-success" *ngFor="let tag of q.tags"><a [routerLink]="['/tags', tag.name]" style="color:white;">{{tag.name}}</a></span></small>
+          <h5 class="mb-1">{{q.name}}</h5>
+          <small>Difficulty: <i class="fa fa-star" aria-hidden="true" *ngFor="let i of difficulty(q.difficulty)"></i><i class="fa fa-star-o" aria-hidden="true" *ngFor="let i of difficulty(5 - q.difficulty)"></i></small>
+          <br>
+          <small><span class="badge badge-success" *ngFor="let tag of q.tags"><a [routerLink]="['/tags', tag.name]" style="color:white;">{{tag.name}}</a></span></small>
         </a>
       </li>
     </ul>

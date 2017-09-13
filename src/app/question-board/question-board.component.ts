@@ -13,6 +13,53 @@ export class QuestionBoardComponent implements OnInit {
   questions: any[];
   errorMessage: string;
 
+  tagsFilter = [
+      {
+        id: '1',
+        name: 'Throw Rotten Tomatoes',
+        count: 2
+      },
+    {
+      id: '2',
+      name: 'Laziness',
+      count: 3
+    },
+    {
+      id: '3',
+        name: 'Invent evil schemes',
+      count: 1
+    },
+    {
+      id: '4',
+        name: 'Never worked with Sportacus',
+      count: 151
+    }
+  ];
+
+  companiesFilter = [
+    {
+      id: '1',
+      name: 'Robbie Rotten Campaign'
+    },
+    {
+      id: '2',
+      name: 'Star Wars troops Union'
+    }
+    ];
+  rolesFilter = [
+    {
+      id: '1',
+      name: 'Villain #1'
+    },
+    {
+      id: '2',
+      name: 'Villain #2'
+    },
+    {
+      id: '3',
+      name: 'Robbie Double'
+    }];
+
   constructor(private questionService: QuestionService) {
   }
 
@@ -27,5 +74,9 @@ export class QuestionBoardComponent implements OnInit {
       },
       error => this.errorMessage = <any>error
     );
+  }
+
+  difficulty(level) {
+    return Array(level);
   }
 }
