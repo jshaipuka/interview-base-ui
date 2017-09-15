@@ -6,6 +6,8 @@ import { routes } from './app-routing.module';
 
 import { HttpModule } from '@angular/http';
 
+import { UserModule } from './user/user.module';
+
 import { AppComponent } from './app.component';
 
 import { CompanyService } from './services/company.service';
@@ -33,7 +35,8 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    HttpModule
+    HttpModule,
+    UserModule
   ],
   providers: [CompanyService, RoleService, QuestionService],
   bootstrap: [AppComponent]

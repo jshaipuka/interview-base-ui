@@ -1,0 +1,21 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" [routerLink]="['/']">Home</a>
+  <span class="breadcrumb-item active">Dashboard</span>
+</nav>
+
+<div class="row">
+  <div class="col-md-2">
+    <ul class="nav side-nav d-block">
+      <li class="active"><a [routerLink]="['dashboard']" >Overview</a></li>
+      <li><a [routerLink]="['questions']">Questions</a></li>
+      <li><a [routerLink]="['companies']">Companies</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10 col-md-offset-2">
+    <h2>Dashboard</h2>
+
+    <p> Over 142 questions</p>
+    <p> Over 5 companies</p>
+
+  </div>
+</div>
