@@ -1,3 +1,41 @@
-<p>
-  manage-companies works!
-</p>
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" [routerLink]="['/']">Home</a>
+  <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+  <a class="breadcrumb-item" routerLink="/dashboard/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Companies</a>
+</nav>
+
+<div class="row">
+  <div class="col-md-2">
+    <ul class="nav side-nav d-block">
+      <li class="active"><a routerLink="/dashboard" >Overview</a></li>
+      <li><a routerLink="/dashboard/questions">Questions</a></li>
+      <li><a routerLink="/dashboard/companies">Companies</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10 col-md-offset-2">
+
+    <h2>Companies</h2>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let company of companies">
+          <td>{{company.id}}</td>
+          <td>{{company.name}}</td>
+          <td><a [routerLink]="['view']"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+          <td><a [routerLink]="['edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
