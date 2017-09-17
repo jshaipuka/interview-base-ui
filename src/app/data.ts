@@ -136,7 +136,7 @@ export const role1 = {
 export const questions = [
   {
     id: '1',
-    name: 'Have you ever used banana peel to make Sportacus trip?',
+    title: 'Have you ever used banana peel to make Sportacus trip?',
     difficulty: 2,
     tags: [
       {
@@ -163,7 +163,7 @@ export const questions = [
   },
   {
     id: '2',
-    name: 'Do you prefer a cake or an apple for breakfast?',
+    title: 'Do you prefer a cake or an apple for breakfast?',
     difficulty: 1,
     tags: [
       {
@@ -180,7 +180,7 @@ export const questions = [
   },
   {
     id: '3',
-    name: 'Do you prefer a green or red apples?',
+    title: 'Do you prefer a green or red apples?',
     difficulty: 3,
     tags: [
       {

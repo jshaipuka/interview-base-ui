@@ -7,9 +7,9 @@
 <div class="row">
   <div class="col-md-8">
     <h4>
-      {{question.name}}
+      {{question.title}}
     </h4>
-    <p>{{question.description}}</p>
+    <p>{{question.text}}</p>
     <h4>
       Answer
     </h4>
@@ -17,7 +17,7 @@
       {{question.answer}}
     </p>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4" *ngIf="false">
     <div class="card">
       <h4 class="card-header">Info</h4>
       <div class="card-body">

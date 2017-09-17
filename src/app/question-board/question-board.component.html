@@ -89,7 +89,7 @@
     <ul class="list-group">
       <li class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let q of questions">
         <a [routerLink]="['/questions', q.id]">
-          <h5 class="mb-1">{{q.name}}</h5>
+          <h5 class="mb-1">{{q.title}}</h5>
           <small>Difficulty: <i class="fa fa-star" aria-hidden="true" *ngFor="let i of difficulty(q.difficulty)"></i><i class="fa fa-star-o" aria-hidden="true" *ngFor="let i of difficulty(5 - q.difficulty)"></i></small>
           <br>
           <small><span class="badge badge-success" *ngFor="let tag of q.tags"><a [routerLink]="['/tags', tag.name]" style="color:white;">{{tag.name}}</a></span></small>
