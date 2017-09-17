@@ -28,9 +28,4 @@ export class ManageQuestionsComponent implements OnInit {
       error => this.errorMessage = <any>error
     );
   }
-
-  difficulty(level) {
-    return Array(level);
-  }
-
 }

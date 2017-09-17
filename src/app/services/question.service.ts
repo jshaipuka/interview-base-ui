@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import {questions, question1} from '../data';
+import {questions, question2} from '../data';
 
 @Injectable()
 export class QuestionService {
@@ -26,7 +26,16 @@ export class QuestionService {
 
   get(id: number | string): Observable<any> {
     return Observable.create(observer => {
-      observer.next(question1);
+      observer.next(question2);
+      observer.complete();
+    });
+  }
+
+  update(question: any): Observable<any> {
+    return Observable.create(observer => {
+      if (!question.id) question.id = 9;
+      questions.push(question);
+      observer.next(questions);
       observer.complete();
     });
   }
@@ -39,6 +48,12 @@ export class QuestionService {
 
   getReal(id: number | string): Observable<any> {
     return this.http.get(this.base_url)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable);
+  }
+
+  updateReal(question: any): Observable<any> {
+    return this.http.post(this.base_url, question)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }

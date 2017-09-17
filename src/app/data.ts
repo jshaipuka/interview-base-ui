@@ -250,3 +250,10 @@ export const question1 = {
   ],
   difficulty: 2
 };
+
+export const question2 = {
+  id: 1,
+  title: 'Do you prefer a cake or an apple for breakfast?',
+  text: 'We are number one!',
+  answer: ' do this and that in see here and whatever'
+};

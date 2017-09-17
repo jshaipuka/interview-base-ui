@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {CompanyService} from '../../services/company.service';
 
 import 'rxjs/add/operator/switchMap';
@@ -13,7 +14,7 @@ export class ManageCompaniesComponent implements OnInit {
   companies: any[];
   errorMessage: string;
 
-  constructor(private companyService: CompanyService) {
+  constructor(private route: ActivatedRoute, private companyService: CompanyService) {
   }
 
   ngOnInit() {

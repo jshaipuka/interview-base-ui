@@ -1,0 +1,25 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" [routerLink]="['/']">Home</a>
+  <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+  <a class="breadcrumb-item" routerLink="/dashboard/companies" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Companies</a>
+  <a class="breadcrumb-item active" routerLink="/dashboard/companies/1">Company</a>
+</nav>
+
+<div class="row">
+  <div class="col-md-2">
+    <ul class="nav side-nav d-block">
+      <li class="active"><a routerLink="/dashboard" >Overview</a></li>
+      <li><a routerLink="/dashboard/questions">Questions</a></li>
+      <li><a routerLink="/dashboard/companies">Companies</a></li>
+    </ul>
+  </div>
+  <div class="col-md-10 col-md-offset-2">
+    <h2>Company</h2>
+    <p>
+      manage-company-detail works!
+     Mode: {{mode}}
+
+    </p>
+  </div>
+</div>
+

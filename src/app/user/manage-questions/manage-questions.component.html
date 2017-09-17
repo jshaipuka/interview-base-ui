@@ -13,8 +13,8 @@
     </ul>
   </div>
   <div class="col-md-10 col-md-offset-2">
-
     <h2>Questions</h2>
+    <button class="btn btn-warning pull-right"><a [routerLink]="['new']">Add new question</a></button>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -30,8 +30,8 @@
         <tr *ngFor=" let question of questions">
           <td>{{question.id}}</td>
           <td>{{question.name}}</td>
-          <td><a [routerLink]="['view']"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
-          <td><a [routerLink]="['edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+          <td><a [routerLink]="[question.id]"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+          <td><a [routerLink]="[question.id, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
           <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
         </tr>
         </tbody>
@@ -39,3 +39,4 @@
     </div>
   </div>
 </div>
+
