@@ -12,7 +12,7 @@ import {questions, question2} from '../data';
 
 @Injectable()
 export class QuestionService {
-  private base_url = `${Config.API_URL}?query=%7BallLinks%7Burl%7D%7D`;
+  private base_url = `${Config.API_URL}/interviews/1/questions`;
 
   constructor(private http: Http) {
   }
