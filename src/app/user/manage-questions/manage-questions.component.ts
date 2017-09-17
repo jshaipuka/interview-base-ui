@@ -28,4 +28,8 @@ export class ManageQuestionsComponent implements OnInit {
       error => this.errorMessage = <any>error
     );
   }
+
+  deleteQuestion(id) {
+    this.questionService.deleteQuestion(id).subscribe(data => data, error => this.errorMessage = <any>error);
+  }
 }

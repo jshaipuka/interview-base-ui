@@ -40,6 +40,15 @@ export class QuestionService {
     });
   }
 
+  deleteQuestion(id): Observable<any> {
+    return Observable.create(observer => {
+      const index = questions.map(q => q.id).indexOf(id);
+      questions.splice(index, 1);
+      observer.next(questions);
+      observer.complete();
+    });
+  }
+
   listReal(): Observable<any> {
     return this.http.get(this.base_url)
       .map(this.extractData)
