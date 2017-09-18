@@ -33,7 +33,7 @@
           <td>{{company.name}}</td>
           <td><a [routerLink]="[company.id]"><i class="fa fa-eye" aria-hidden="true"></i></a></td>
           <td><a [routerLink]="[company.id, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-          <td><i class="fa fa-trash-o" aria-hidden="true"></i></td>
+          <td><button class="btn btn-link" (click)="deleteCompany(company.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
         </tr>
         </tbody>
       </table>

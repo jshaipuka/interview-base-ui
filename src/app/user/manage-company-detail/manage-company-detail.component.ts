@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import {CompanyService} from '../../services/company.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CompanyService } from '../../services/company.service';
 
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
@@ -12,8 +13,11 @@ import 'rxjs/add/operator/map';
 })
 export class ManageCompanyDetailComponent implements OnInit {
   mode: string;
+  company: any;
+  errorMessage: string;
+  companyForm: FormGroup;
 
-  constructor(private route: ActivatedRoute, private companyService: CompanyService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private companyService: CompanyService) { }
 
   ngOnInit() {
     this.route.data.forEach(d => {
@@ -21,17 +25,35 @@ export class ManageCompanyDetailComponent implements OnInit {
         this.mode = d.mode;
       }
     });
-    //
-    //   .params.subscribe(params => {
-    //   this.id = +params['id']; // (+) converts string 'id' to a number
-    //   // In a real app: dispatch action to load the details here.
-    // });
-    // this.companyService.get().subscribe(
-    //   data => {
-    //     this.companies = data;
-    //   },
-    //   error => this.errorMessage = <any>error
-    // );
+    this.getData();
+    this.addForm();
   }
 
+  private getData() {
+    if (this.mode === 'new') return;
+    this.route.params.subscribe(params => {
+      this.companyService.get(params['id']).subscribe(
+        data => {
+          this.company = data;
+        },
+        error => this.errorMessage = <any>error
+      );
+    });
+  }
+
+  private addForm() {
+    if (this.mode === 'read') return;
+    this.companyForm = new FormGroup({
+      name: new FormControl((this.company && this.company.name) || '', Validators.required),
+      description: new FormControl((this.company && this.company.description) || '')
+    });
+  }
+
+  submit() {
+    const companyData = this.companyForm.value;
+    if (this.company) Object.assign(companyData, { id: this.company.id });
+    console.log(companyData);
+    this.companyService.update(companyData).subscribe(data => data, error => this.errorMessage = <any>error);
+    this.router.navigate(['/dashboard/companies']);
+  }
 }

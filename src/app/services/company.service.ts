@@ -31,6 +31,25 @@ export class CompanyService {
     });
   }
 
+  update(company: any): Observable<any> {
+    return Observable.create(observer => {
+      if (!company.id) company.id = 9;
+      companies.push(company);
+      observer.next(companies);
+      observer.complete();
+    });
+  }
+
+  deleteQuestion(id): Observable<any> {
+    return Observable.create(observer => {
+      const index = companies.map(q => q.id).indexOf(id);
+      companies.splice(index, 1);
+      observer.next(companies);
+      observer.complete();
+    });
+  }
+
+
   listReal(): Observable<any> {
     return this.http.get(this.base_url)
       .map(this.extractData)

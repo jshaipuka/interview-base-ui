@@ -29,4 +29,8 @@ export class ManageCompaniesComponent implements OnInit {
       error => this.errorMessage = <any>error
     );
   }
+
+  deleteCompany(id) {
+    this.companyService.deleteQuestion(id).subscribe(data => data, error => this.errorMessage = <any>error);
+  }
 }

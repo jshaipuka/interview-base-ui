@@ -13,13 +13,30 @@
       <li><a routerLink="/dashboard/companies">Companies</a></li>
     </ul>
   </div>
-  <div class="col-md-10 col-md-offset-2">
-    <h2>Company</h2>
-    <p>
-      manage-company-detail works!
-     Mode: {{mode}}
-
-    </p>
+  <div class="col-md-9 col-md-offset-2">
+    <div *ngIf="mode !== 'read'">
+      <h2>Question</h2>
+      <p>manage-company-detail works! Mode: {{mode}}</p>
+      <form [formGroup]="companyForm" novalidate>
+        <div class="form-group">
+          <label for="companyName">Name</label>
+          <input formControlName="name" type="text" class="form-control" id="companyName" value="" required>
+          <div class="invalid-feedback">
+            Company name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description">Description <small class="text-muted">optional</small></label>
+          <input formControlName="text" type="text" class="form-control" id="description" value="">
+        </div>
+        <button class="btn btn-primary" (click)="submit()">Submit</button>
+      </form>
+    </div>
+    <div *ngIf="mode === 'read'">
+      <h2>
+        {{company.name}}
+      </h2>
+      <p>{{company.description}}</p>
+    </div>
   </div>
 </div>
-
