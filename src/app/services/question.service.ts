@@ -8,70 +8,36 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
-import { questions } from '../data';
+import { Question } from '../models/question';
 
 @Injectable()
 export class QuestionService {
   private base_url = `${Config.API_URL}/interviews`;
 
-  constructor(private http: Http) {
-  }
+  constructor(private http: Http) { }
 
-  list(): Observable<any> {
-    return Observable.create(observer => {
-      observer.next(questions);
-      observer.complete();
-    });
-  }
-
-  get(id: number | string): Observable<any> {
-    const question = questions.find(i => i.id == id);
-    return Observable.create(observer => {
-      observer.next(question);
-      observer.complete();
-    });
-  }
-
-  update(question: any): Observable<any> {
-    return Observable.create(observer => {
-      if (!question.id) question.id = 9;
-      questions.push(question);
-      observer.next(questions);
-      observer.complete();
-    });
-  }
-
-  deleteQuestion(id): Observable<any> {
-    return Observable.create(observer => {
-      const index = questions.map(q => q.id).indexOf(id);
-      questions.splice(index, 1);
-      observer.next(questions);
-      observer.complete();
-    });
-  }
-
-  list2(): Observable<any> {
-    return this.http.get(`${this.base_url}/1/questions`)
+  list(interviewId: number): Observable<Question[]> {
+    return this.http.get(`${this.base_url}/${interviewId}/questions`)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }
 
-  getReal(id: number | string): Observable<any> {
-    return this.http.get(this.base_url)
+  get(interviewId: number, id: number): Observable<Question> {
+    return this.http.get(`${this.base_url}/${interviewId}/questions/${id}`)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }
 
-  updateReal(question: any): Observable<any> {
-    return this.http.post(this.base_url, question)
+  update(interviewId: number, question: Question): Observable<any> {
+    return this.http.post(`${this.base_url}/${interviewId}/questions`, question)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
   }
 
-  create(question: any): Promise<any> {
-    return this.http.post(this.base_url, question).toPromise()
-      .then(response => response.json())
-      .catch(this.handleError);
+  deleteQuestion(interviewId: number, id: number): Observable<any> {
+    return this.http.delete(`${this.base_url}/${interviewId}/questions/${id}`)
+      .map(this.extractData)
+      .catch(this.handleErrorObservable);
   }
 
   private extractData(response: Response) {
@@ -94,6 +60,5 @@ export class QuestionService {
     }
     return Observable.throw(errMsg);
   }
-
 }
 

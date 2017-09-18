@@ -87,20 +87,15 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
 
   revert() { this.ngOnChanges(); }
 
-  persistQuestions(questions: Question[]) {
-    questions.forEach( question => this.questionService.create(question).catch(error => this.errorMessage = <any>error) );
-  }
-
-  persistInterview(name: string) {
-    this.interviewService.create({ name }).catch(error => this.errorMessage = <any>error);
+  persistInterview(interview: Interview) {
+    this.interviewService.create(interview).catch(error => this.errorMessage = <any>error);
   }
 
   submit() {
     const interviewData = this.interviewForm.value;
     if (this.interview) Object.assign(interviewData, { id: this.interview.id });
 
-    this.persistQuestions(interviewData.questions);
-    this.persistInterview(interviewData.name);
+    this.persistInterview(interviewData);
     this.router.navigate(['/interviews']);
   }
 }
