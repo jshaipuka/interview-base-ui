@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {Company} from '../models/Company';
 import {CompanyService} from '../services/company.service';
 import {ActivatedRoute} from '@angular/router';
 
@@ -12,7 +11,7 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./company-detail.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-  company: Company;
+  company: any;
   errorMessage: string;
 
   constructor(
