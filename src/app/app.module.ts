@@ -14,10 +14,6 @@ import { CompanyService } from './services/company.service';
 import { CompanyBoardComponent } from './company-board/company-board.component';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
-import { RoleService } from './services/role.service';
-import { RoleBoardComponent } from './role-board/role-board.component';
-import { RoleDetailComponent } from './role-detail/role-detail.component';
-
 import { QuestionService } from './services/question.service';
 import { QuestionBoardComponent } from './question-board/question-board.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
@@ -27,8 +23,6 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     AppComponent,
     CompanyBoardComponent,
     CompanyDetailComponent,
-    RoleBoardComponent,
-    RoleDetailComponent,
     QuestionBoardComponent,
     QuestionDetailComponent
   ],
@@ -38,7 +32,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     HttpModule,
     UserModule
   ],
-  providers: [CompanyService, RoleService, QuestionService],
+  providers: [CompanyService, QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

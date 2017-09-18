@@ -28,14 +28,6 @@
     <h1><a [routerLink]="['questions']" class="badge badge-pill badge-info">{{company.questionCount}}</a></h1>
   </div>
   <div class="col-3">
-    <h4>Roles</h4>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let role of company.roles">
-        <a [routerLink]="['/roles', role.id]">{{role.name}}</a>
-      </li>
-    </ul>
-  </div>
-  <div class="col-3">
     <h4>Skills</h4>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let tag of company.skills">
