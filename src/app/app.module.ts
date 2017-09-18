@@ -10,10 +10,6 @@ import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 
-import { CompanyService } from './services/company.service';
-import { CompanyBoardComponent } from './company-board/company-board.component';
-import { CompanyDetailComponent } from './company-detail/company-detail.component';
-
 import { QuestionService } from './services/question.service';
 import { QuestionBoardComponent } from './question-board/question-board.component';
 import { QuestionDetailComponent } from './question-detail/question-detail.component';
@@ -21,8 +17,6 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
 @NgModule({
   declarations: [
     AppComponent,
-    CompanyBoardComponent,
-    CompanyDetailComponent,
     QuestionBoardComponent,
     QuestionDetailComponent
   ],
@@ -32,7 +26,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     HttpModule,
     UserModule
   ],
-  providers: [CompanyService, QuestionService],
+  providers: [QuestionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
