@@ -1,25 +1,20 @@
 import { Routes } from '@angular/router';
 
 import { UserComponent } from './user.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
-import { ManageQuestionsComponent } from './manage-questions/manage-questions.component';
-import { ManageQuestionDetailComponent } from './manage-question-detail/manage-question-detail.component';
+
+import { ManageInterviewsComponent } from './manage-interviews/manage-interviews.component';
+import { ManageInterviewDetailComponent } from './manage-interview-detail/manage-interview-detail.component';
 
 export const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: UserComponent,
     children: [
-      {
-        path: '',
-        children: [
-          { path: 'questions', component: ManageQuestionsComponent },
-          { path: 'questions/new', component: ManageQuestionDetailComponent, data: { mode: 'new' } },
-          { path: 'questions/:id', component: ManageQuestionDetailComponent, data: { mode: 'read' } },
-          { path: 'questions/:id/edit', component: ManageQuestionDetailComponent, data: { mode: 'edit' } },
-          { path: '', component: UserDashboardComponent }
-        ]
-      }
+      { path: 'interviews', component: ManageInterviewsComponent },
+      { path: 'interviews/new', component: ManageInterviewDetailComponent, data: { mode: 'new' } },
+      { path: 'interviews/:id', component: ManageInterviewDetailComponent, data: { mode: 'read' } },
+      { path: 'interviews/:id/edit', component: ManageInterviewDetailComponent, data: { mode: 'edit' } },
+      { path: '', component: ManageInterviewsComponent }
     ]
   }
 ];

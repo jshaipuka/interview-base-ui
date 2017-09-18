@@ -5,17 +5,15 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { routes } from './user-routing.module';
 
-import { ManageQuestionsComponent } from './manage-questions/manage-questions.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { UserComponent } from './user.component';
-import { ManageQuestionDetailComponent } from './manage-question-detail/manage-question-detail.component';
+import { ManageInterviewsComponent } from './manage-interviews/manage-interviews.component';
+import { ManageInterviewDetailComponent } from './manage-interview-detail/manage-interview-detail.component';
 
 @NgModule({
   declarations: [
-    ManageQuestionsComponent,
-    UserDashboardComponent,
     UserComponent,
-    ManageQuestionDetailComponent,
+    ManageInterviewsComponent,
+    ManageInterviewDetailComponent,
   ],
   imports: [
     CommonModule,

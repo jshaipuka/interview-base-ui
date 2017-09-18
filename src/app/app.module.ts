@@ -11,14 +11,11 @@ import { UserModule } from './user/user.module';
 import { AppComponent } from './app.component';
 
 import { QuestionService } from './services/question.service';
-import { QuestionBoardComponent } from './question-board/question-board.component';
-import { QuestionDetailComponent } from './question-detail/question-detail.component';
+import { InterviewService } from './services/interview.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionBoardComponent,
-    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +23,7 @@ import { QuestionDetailComponent } from './question-detail/question-detail.compo
     HttpModule,
     UserModule
   ],
-  providers: [QuestionService],
+  providers: [QuestionService, InterviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
-export interface Question {
-  id: number;
-  title: string;
-  text: string;
-  answer: string;
+export class Question {
+  id?: number;
+  title = '';
+  text = '';
+  answer = '';
 }

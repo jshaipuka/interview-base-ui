@@ -1,0 +1,36 @@
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" [routerLink]="['/']">Home</a>
+  <a class="breadcrumb-item" routerLink="/interviews" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Interviews</a>
+</nav>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <h2>Interviews</h2>
+    <button class="btn btn-warning pull-right"><a [routerLink]="['new']">Add new interview</a></button>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>questions</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor=" let interview of interviews">
+          <td>{{interview.id}}</td>
+          <td>{{interview.name}}</td>
+          <td>{{interview.questions && interview.questions.length || 0}}</td>
+          <td><button class="btn btn-link" [routerLink]="[interview.id]"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-link" [routerLink]="[interview.id, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
+          <td><button class="btn btn-link" (click)="deleteQuestion(interview.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
