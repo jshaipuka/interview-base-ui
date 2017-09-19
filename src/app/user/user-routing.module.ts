@@ -14,7 +14,7 @@ export const routes: Routes = [
       { path: 'interviews/new', component: ManageInterviewDetailComponent, data: { mode: 'new' } },
       { path: 'interviews/:id', component: ManageInterviewDetailComponent, data: { mode: 'read' } },
       { path: 'interviews/:id/edit', component: ManageInterviewDetailComponent, data: { mode: 'edit' } },
-      { path: '', component: ManageInterviewsComponent }
+      { path: '', redirectTo: '/interviews', pathMatch: 'full' }
     ]
   }
 ];
