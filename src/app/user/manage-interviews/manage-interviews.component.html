@@ -1,35 +1,34 @@
-<nav class="breadcrumb">
-  <a class="breadcrumb-item" [routerLink]="['/']">Home</a>
-  <a class="breadcrumb-item" routerLink="/interviews" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Interviews</a>
-</nav>
+<!--<nav class="breadcrumb">-->
+  <!--<a class="breadcrumb-item" [routerLink]="['/']">Home</a>-->
+  <!--<a class="breadcrumb-item" routerLink="/interviews" routerLinkActive="active"-->
+     <!--[routerLinkActiveOptions]="{ exact: true }">Interviews</a>-->
+<!--</nav>-->
 
 <div class="row">
   <div class="col-md-offset-2 col-md-8">
-    <h2>Interviews</h2>
-    <button class="btn btn-warning pull-right"><a [routerLink]="['new']">Add new interview</a></button>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <th>id</th>
-          <th>name</th>
-          <th>questions</th>
-          <th></th>
-          <th></th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor=" let interview of interviews">
-          <td>{{interview.id}}</td>
-          <td>{{interview.name}}</td>
-          <td>{{interview.questions && interview.questions.length || 0}}</td>
-          <td><button class="btn btn-link" [routerLink]="[interview.id]"><i class="fa fa-eye" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-link" [routerLink]="[interview.id, 'edit']"><i class="fa fa-pencil" aria-hidden="true"></i></button></td>
-          <td><button class="btn btn-link" (click)="deleteQuestion(interview.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="list-group">
+      <div class="list-group-item d-flex justify-content-end p-4 list-header-grey">
+        <a class="btn btn-outline-dark" [routerLink]="['new']" role="button"><i class="fa fa-plus fa-lg"></i><span class="d-none d-lg-inline"> Add interview</span></a>
+      </div>
+      <a *ngFor="let interview of interviews" [routerLink]="[interview.id]" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-start align-items-center">
+          <div class="d-none d-sm-flex flex-column align-items-center">
+            <div class="border-circle">{{interview.questions && interview.questions.length || 0}}</div>
+            <small class="text-muted">Questions</small>
+          </div>
+          <div class="p-4">
+            <h5 class="mb-1">{{interview.name}}</h5>
+            <small class="d-block d-sm-none text-muted">{{interview.questions && interview.questions.length || 'No'}} questions</small>
+          </div>
+          <div class="ml-auto d-none d-sm-flex justify-content-end">
+            <a class="btn btn-outline-dark mr-3 active" [routerLink]="[interview.id, 'edit']" role="button"><i class="fa fa-pencil fa-lg"></i><span class="d-none d-lg-inline"> Edit</span></a>
+            <a class="btn btn-outline-dark" [routerLink]="['']" role="button" (click)="deleteQuestion(interview.id)"><i class="fa fa-trash-o fa-lg"></i><span class="d-none d-lg-inline"> Delete</span></a>
+          </div>
+          <div class="ml-auto d-flex d-sm-none justify-content-end pr-3 pr-sm-0">
+            <i class="fa fa-chevron-right fa-lg"></i>
+          </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>
