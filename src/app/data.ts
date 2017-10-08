@@ -34,7 +34,7 @@ export const interviews = [
         id: 3,
         title: 'Do you prefer a green or red apples?3',
         text: 'We are number one!',
-        answer: ' do this and that in see here and whatever'
+        answer: ''
       }
     ]
   },
@@ -73,5 +73,9 @@ export const interviews = [
         answer: ' do this and that in see here and whatever'
       }
     ]
+  },
+  {
+    id: 5,
+    name: 'Do you prefer a green or red apples?'
   }
 ];
