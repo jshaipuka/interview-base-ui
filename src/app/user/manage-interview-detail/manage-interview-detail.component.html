@@ -7,9 +7,9 @@
 
 <div class="row">
   <div class="col-md-9 col-md-offset-2">
-    <div *ngIf="mode !== 'read'">
+    <div *ngIf="!readMode">
       <h2>Interview</h2>
-      <p>manage-question-detail works! Mode: {{mode}}</p>
+      <p>manage-question-detail works!</p>
       <form [formGroup]="interviewForm" novalidate>
         <div class="form-group">
           <label for="interviewName">Name</label>
@@ -50,7 +50,7 @@
         <button class="btn btn-primary" (click)="submit()">Submit</button>
       </form>
     </div>
-    <div *ngIf="mode === 'read'">
+    <div *ngIf="readMode">
       <h2>
         {{interview.name}}
       </h2>

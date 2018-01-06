@@ -8,6 +8,8 @@ import { QuestionService } from '../../services/question.service';
 import { Interview } from '../../models/interview';
 import { Question } from '../../models/question';
 
+import { ViewMode } from '../view-mode.enum';
+
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/map';
 
@@ -17,10 +19,11 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./manage-interview-detail.component.css']
 })
 export class ManageInterviewDetailComponent implements OnInit, OnChanges {
-  mode: string;
   interview: Interview;
   errorMessage: string;
   interviewForm: FormGroup;
+  readMode: boolean;
+  private viewMode: ViewMode;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,11 +35,7 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.route.data.forEach(d => {
-      if (d.mode) {
-        this.mode = d.mode;
-      }
-    });
+    this.setViewMode();
     this.getData();
     this.createForm();
     this.setQuestions(this.interview && this.interview.questions);
@@ -49,8 +48,20 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
     this.setQuestions(this.interview && this.interview.questions);
   }
 
+  private setViewMode() {
+    this.route.data.forEach(d => {
+      if (d.viewMode) {
+        this.viewMode = d.viewMode;
+        this.readMode = this.viewMode === ViewMode.READ;
+      }
+    });
+  }
+
   private getData() {
-    if (this.mode === 'new') return;
+    if (this.viewMode === ViewMode.CREATE) {
+      return;
+    }
+
     this.route.params.subscribe(params => {
       this.interviewService.get(+params['id']).subscribe(
         data => {
@@ -61,9 +72,11 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
     });
   }
 
-
   createForm() {
-    if (this.mode === 'read') return;
+    if (this.readMode) {
+      return;
+    }
+
     this.interviewForm = this.formBuilder.group({
       name: [(this.interview && this.interview.name) || '', Validators.required],
       questions: this.formBuilder.array(this.interview && this.interview.questions || [])
@@ -71,7 +84,10 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
   }
 
   setQuestions(questions: Question[] = []) {
-    if (this.mode === 'read') return;
+    if (this.readMode) {
+      return;
+    }
+
     const questionsFormsGroups = questions.map(question => this.formBuilder.group(question));
     const questionFormArray = this.formBuilder.array(questionsFormsGroups);
     this.interviewForm.setControl('questions', questionFormArray);
@@ -93,7 +109,9 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
 
   submit() {
     const interviewData = this.interviewForm.value;
-    if (this.interview) Object.assign(interviewData, { id: this.interview.id });
+    if (this.interview) {
+      Object.assign(interviewData, { id: this.interview.id });
+    }
 
     this.persistInterview(interviewData);
     this.router.navigate(['/interviews']);
