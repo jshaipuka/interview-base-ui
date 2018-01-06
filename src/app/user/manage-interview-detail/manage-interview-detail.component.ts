@@ -114,6 +114,6 @@ export class ManageInterviewDetailComponent implements OnInit, OnChanges {
     }
 
     this.persistInterview(interviewData);
-    this.router.navigate(['/interviews']);
+    this.router.navigate(['']);
   }
 }

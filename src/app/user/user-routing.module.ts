@@ -12,11 +12,10 @@ export const routes: Routes = [
     path: '',
     component: UserComponent,
     children: [
-      { path: 'interviews', component: ManageInterviewsComponent },
-      { path: 'interviews/new', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.CREATE } },
-      { path: 'interviews/:id', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.READ } },
-      { path: 'interviews/:id/edit', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.WRITE } },
-      { path: '', redirectTo: '/interviews', pathMatch: 'full' }
+      { path: '', component: ManageInterviewsComponent, pathMatch: 'full' },
+      { path: 'new', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.CREATE } },
+      { path: ':id', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.READ } },
+      { path: ':id/edit', component: ManageInterviewDetailComponent, data: { viewMode: ViewMode.WRITE } },
     ]
   }
 ];
